@@ -8,14 +8,14 @@ import { Context } from "../utils/constant";
 const AppContext = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResult] = useState(false);
-  const [selectCategories, setSelectCategories] = useState("New");
+  const [selectedCategory, setSelectedCategory] = useState("New");
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     (async () => {
-      await fetchSelectedCategoryData(selectCategories);
+      await fetchSelectedCategoryData(selectedCategory);
     })();
-  }, [selectCategories]);
+  }, [selectedCategory]);
 
   async function fetchSelectedCategoryData(params: any) {
     setLoading(true);
@@ -33,8 +33,8 @@ const AppContext = (props: any) => {
         setLoading,
         searchResults,
         setSearchResult,
-        selectCategories,
-        setSelectCategories,
+        selectedCategory,
+        setSelectedCategory,
         mobileMenu,
         setMobileMenu,
       }}
