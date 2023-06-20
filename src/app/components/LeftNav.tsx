@@ -28,11 +28,11 @@ const LeftNav = () => {
       >
         <div className="flex px-5 flex-col">
           {categories?.length > 0 &&
-            categories?.map((item, index) => {
+            categories?.map((item) => {
               return (
                 <>
                   <LeftNavMenuItem
-                    id={item?.id?.toString()}
+                    id={item.name}
                     text={item?.type === "home" ? "Home" : item?.name}
                     icon={item?.icon}
                     action={() => clickHandler(item?.name, item?.type)}

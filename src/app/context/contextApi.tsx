@@ -7,7 +7,7 @@ import { Context } from "../utils/constant";
 
 const AppContext = (props: any) => {
   const [loading, setLoading] = useState(false);
-  const [searchResults, setSearchResult] = useState(false);
+  const [searchResults, setSearchResults] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -19,9 +19,9 @@ const AppContext = (props: any) => {
 
   async function fetchSelectedCategoryData(params: any) {
     setLoading(true);
-    await fetchDataFromApi(`search/?q=${params}`).then((res) => {
-      console.log({ res });
-      // setSelectCategories(res);
+    await fetchDataFromApi(`search/?q=${params}`).then((contents) => {
+      console.log(contents);
+      setSearchResults(contents);
       setLoading(false);
     });
   }
@@ -32,7 +32,7 @@ const AppContext = (props: any) => {
         loading,
         setLoading,
         searchResults,
-        setSearchResult,
+        setSearchResults,
         selectedCategory,
         setSelectedCategory,
         mobileMenu,

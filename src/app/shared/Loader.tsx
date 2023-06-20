@@ -1,6 +1,11 @@
 import React from "react";
+import { AnchorHTMLAttributes } from "react";
 
-const Loader = () => {
+type LoaderProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  className?: string;
+};
+
+export const Loader: React.FC<LoaderProps> = () => {
   return (
     <div className="load-bar">
       <div className="bar"></div>
@@ -10,4 +15,6 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export const Loading: React.FC<LoaderProps> = () => {
+  return <p>Loading...</p>;
+};

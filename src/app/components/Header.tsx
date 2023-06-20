@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ytlogo from "/images/yt-logo.png";
 import ytLogoMobile from "/images/yt-logo-mobile.png";
-import Loader from "../shared/Loader";
+import { Loader } from "../shared/Loader";
 import { SlMenu } from "react-icons/sl";
 import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
