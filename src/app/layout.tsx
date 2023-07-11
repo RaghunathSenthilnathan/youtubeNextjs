@@ -1,17 +1,17 @@
 import "./globals.css";
-import { Inter, Roboto_Mono } from "next/font/google";
+// import { Inter, Roboto_Mono } from "next/font/google";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+// const inter = Inter({
+//   subsets: ["latin"],
+//   variable: "--font-inter",
+//   display: "swap",
+// });
 
-const roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
-  display: "swap",
-});
+// const roboto_mono = Roboto_Mono({
+//   subsets: ["latin"],
+//   variable: "--font-roboto-mono",
+//   display: "swap",
+// });
 
 export const metadata = {
   title: "Youtube Clone",
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+    <html lang="en" >
       <body>{children}</body>
     </html>
   );
