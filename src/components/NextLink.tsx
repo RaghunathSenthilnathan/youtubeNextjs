@@ -4,7 +4,7 @@ import { AnchorHTMLAttributes } from "react";
 type NextLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   underline?: boolean;
   className?: string;
-  href: string;
+   href: string | { pathname : string ; query : {id : string}}
 };
 
 export const NextLink: React.FC<NextLinkProps> = ({
@@ -17,19 +17,15 @@ export const NextLink: React.FC<NextLinkProps> = ({
   const border = underline
     ? "border-b border-indigo-300 hover:border-indigo-400"
     : "";
-
-  const isInternalLink = href?.startsWith("/");
-  if (isInternalLink) {
+ 
+  
+ 
     return (
       <Link href={href} className={`${className} ${border}`} {...props}>
         {children}
       </Link>
     );
-  }
+  
 
-  return (
-    <a href={href} className={className} {...props}>
-      {children}
-    </a>
-  );
+ 
 };

@@ -8,11 +8,11 @@ const VideoCard = ({ video }) => {
  console.log({video})
   return (
     <>
-      <NextLink href={`/video/${video.videoId}`}>
+      <NextLink href={`/video?id=${video.videoId}`}>
         <div className="flex flex-col mb-8">
         <div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
           <img
-            className="h-full w-full object-cover "
+            className="h-full w-full object-cover"
             src={video?.thumbnails[0]?.url}
           />
           {video?.lengthSeconds && (<VideoLength time= {video?.lengthSeconds}/>)}
