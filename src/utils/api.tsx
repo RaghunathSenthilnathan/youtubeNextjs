@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://youtube138.p.rapidapi.com";
-
+// NEXT_PUBLIC_REACT_YOUTUBE_CLONE_SECRET_KEY = 'c8448a3303mshf544819239dbd98p1ab615jsn984c2b52f3c4'
 const options = {
   params: {
     hl: "en",

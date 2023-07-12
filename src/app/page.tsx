@@ -1,23 +1,28 @@
 "use client";
-
-import { Suspense } from "react";
-import Image from "next/image";
-import Context from "../context/contextApi";
+import React,{ Suspense,useEffect,useState} from "react";
 import Header from "../components/Header";
-import Feed from "../components/Feed";
-import SearchResult from "../components/SearchResult";
+import Context from "../context/contextApi";
 import { Loading } from "../shared/Loader";
+import SearchResult from "@/components/SearchResult";
+import dynamic from 'next/dynamic'
 
 export default function Home() {
-  return (
-    <main className="flex flex-col h-full">
+  const Feed = dynamic(() => import("../components/Feed"), { ssr: false });
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  return (<>
+  { isClient && (<main className="flex flex-col h-full">
       <Context>
         <Header />
         <Suspense fallback={<Loading />}>
           <Feed />
         </Suspense>
-        {/* <SearchResult /> */}
+        <SearchResult />
       </Context>
-    </main>
+    </main>)}
+  </>
+    
   );
 }
