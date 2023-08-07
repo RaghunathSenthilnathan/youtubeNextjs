@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
-import ytlogo from "/images/yt-logo.png";
-import ytLogoMobile from "/images/yt-logo-mobile.png";
-import { Loader } from "../shared/Loader";
-import { SlMenu } from "react-icons/sl";
+import { usePathname, useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import { CgClose } from "react-icons/cg";
+import { FiBell } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
-import { FiBell } from "react-icons/fi";
-import { CgClose } from "react-icons/cg";
+import { SlMenu } from "react-icons/sl";
+import { Loader } from "../shared/Loader";
 import { Context } from "../utils/constant";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { NextLink } from "./NextLink";
 
 const Header = () => {

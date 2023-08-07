@@ -8,8 +8,6 @@ import VideoLength from "../shared/VideoLength";
 
 const VideoCard = ({ video }) => {
 
-
- 
   return (
     <>
       <NextLink href={`/video?id=${video.videoId}`}>

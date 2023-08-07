@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { useRouter } from "next/navigation";
 import LeftNavMenuItem from "./LeftNavMenuItem";
-import { categories } from "../utils/constant";
-import { Context } from "../utils/constant";
+import { Context,categories } from "../utils/constant";
+
 
 const LeftNav = () => {
   const { selectedCategory, setSelectedCategory, mobileMenu } =
     useContext(Context);
-  const clickHandler = (name, type) => {
+  const clickHandler = (name : string, type: string) => {
     switch (type) {
       case "category":
         return setSelectedCategory(name);

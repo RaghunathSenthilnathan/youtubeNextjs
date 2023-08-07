@@ -38,4 +38,4 @@ export const categories = [
   { id: 14, name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
 
-export const Context = createContext();
+export const Context = createContext(null);
