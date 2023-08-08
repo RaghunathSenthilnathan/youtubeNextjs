@@ -7,37 +7,36 @@ import { fetchDataFromApi } from '@/utils/api';
 import ReactPlayer from 'react-player';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { AiOutlineLike } from 'react-icons/ai';
+import { Loader } from "../../shared/Loader";
 import { abbreviateNumber } from 'js-abbreviation-number';
 import SuggestionVideos from '@/components/SuggestionVideosCard';
 import SuggestionVideosCard from '@/components/SuggestionVideosCard';
 
-const VideoPanel = () => {
-
+const VideoCardPanel = () => {
+  const [loading, setLoading] = useState(false);
   const [video, setVideo] = useState()
   const [relatedVideos, setRelatedVideos] = useState()
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
-  // const { setLoading } = useContext(Context);
   const fetchVideoDetails =
     useCallback(
       async () => {
-        // setLoading(true);
+        setLoading(true);
         await fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
           console.log({ res })
           setVideo(res)
-          // setLoading(false)
+          setLoading(false)
         })
       },
-
       [id]
     )
 
   const fetchRelatedVideos = useCallback(async () => {
-    // setLoading(true);
+    setLoading(true);
     await fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
       console.log({ res })
       setRelatedVideos(res)
-      // setLoading(false)
+      setLoading(false)
     })
   },[id])
 
@@ -54,9 +53,13 @@ const VideoPanel = () => {
  console.log({id,video})
  
   return (
+    
+   
+
     <div className='flex justify-center flex-row h-[calc(100%-56px)] bg-black'>
+       {loading && <Loader />}
       <div className='w-full max-w-[1280px]  flex flex-col justify-center lg:flex-row'>
-        <div className='flex flex-col lg:w-[calc100%-350px] xl:w-[calc100%-400px] px-4 py-3 lg:py-6 overflow-y-auto'>
+        <div className='flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc100%-400px] px-4 py-3 lg:py-6 overflow-y-auto'>
           <div className='h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0'>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
@@ -74,19 +77,19 @@ const VideoPanel = () => {
               <div className='flex items-start'>
                 <div className=' flex h-11 w-11 rounded-full overflow-hidden'>
                   <img className="h-full w-full object-cover " src={video?.author?.avatar[0]?.url} />
-
+                   
                 </div>
               </div>
               <div className=' flex flex-col ml-3'>
                 <div className=' text-white text-md font-semibold flex items-center'>
                   {video?.author?.title}
                   {
-                    video?.author?.badges[0]?.type === "VERIFIED CHANNEL" && (
+                    video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                       <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1' />
                     )}
                 </div>
                 <div className=' text-white/[0.7] text-sm'>
-                  {video?.author?.state?.subscribersText}
+                  {video?.author?.stats?.subscribersText}
                 </div>
               </div>
              
@@ -116,7 +119,8 @@ const VideoPanel = () => {
   </div>
       </div>
      </div>
+    
   )
 }
 
-export default VideoPanel;
+export default VideoCardPanel;

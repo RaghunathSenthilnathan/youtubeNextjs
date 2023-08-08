@@ -19,7 +19,7 @@ const Header = () => {
       (event?.key === "Enter" || event === "searchButton") &&
       searchQuery?.length > 0
     ) {
-      router.push(`/searchResult/${searchQuery}`);
+      router.push(`/searchresult/${searchQuery}`);
     }
   };
 

@@ -5,6 +5,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
 import VideoLength from "../shared/VideoLength";
+import Image from "next/image";
 
 const VideoCard = ({ video }) => {
 
@@ -13,11 +14,18 @@ const VideoCard = ({ video }) => {
       <NextLink href={`/video?id=${video.videoId}`}>
         <div  className="flex flex-col mb-8">
         <div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
-          <img
+          
+          <Image
             className="h-full w-full object-cover"
             src={video?.thumbnails[0]?.url}
+            alt="videothumb"
+            height={100}
+            width ={100}
           />
-          {video?.lengthSeconds && (<VideoLength time= {video?.lengthSeconds}/>)}
+         <div className="absolute bottom-0 right-0 bg-black px-1 text-white
+     text-xs rounded">
+        {video?.lengthSeconds && (<VideoLength time= {video?.lengthSeconds}/>)}
+        </div>
         </div>
         <div className="flex text-white mt-3">
           <div className="flex items-start">
@@ -34,7 +42,7 @@ const VideoCard = ({ video }) => {
             <span className=" text-[12px] font-semibold mt-3 text-white/[0.7] flex items-center">
               {video?.author?.title}
               {
-                video?.author?.badges[0]?.type === "VERIFIED CHANNEL" && (
+                video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                   <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1"/>
                 )
               }

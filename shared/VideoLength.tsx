@@ -1,12 +1,16 @@
 import React from "react";
 import moment from "moment";
 const VideoLength = ({ time }) => {
-  const videoLengthInSeconds = moment() ?
+  let videoLengthInSeconds = moment() ?
     .startOf("day") ?
     .seconds(time) ?
     .format("H:mm:ss");
+    console.log(parseInt(videoLengthInSeconds.slice(0,1)) > 0)
+    if(parseInt(videoLengthInSeconds.slice(0,1)) < 1){
+      videoLengthInSeconds = videoLengthInSeconds.slice(2,7)
+    }
   return (
-    <div className="absolute bottom-2 right-2 bg-black py-1 px-2 text-white text-xs rounded-md ">
+    <div>
       {videoLengthInSeconds}
     </div>
   );

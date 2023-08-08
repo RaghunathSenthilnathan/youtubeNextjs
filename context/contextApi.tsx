@@ -50,8 +50,6 @@ const AppContext = (props: ProviderProps<string>) => {
     })
       
     }
-     
-  
 
   return (
     <Context.Provider 

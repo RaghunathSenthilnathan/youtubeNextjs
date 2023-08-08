@@ -18,6 +18,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
     "js-abbreviation-number": "^1.4.0",
+    "mini-css-extract-plugin": "^2.7.6",
     "moment": "^2.29.4",
     "next": "13.4.6",
     "postcss": "8.4.24",
