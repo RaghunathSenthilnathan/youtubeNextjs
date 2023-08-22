@@ -1,4 +1,4 @@
-export const newContent = {
+export const newContent :  any = {
   contents: [
     {
       type: "video",

@@ -5,7 +5,31 @@ import VideoLength from "@/shared/VideoLength";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { abbreviateNumber } from "js-abbreviation-number";
 
-const SearchResultVideoCard = ({ video }) => {
+type AuthorTypes = {
+  author: { url: string }[];
+  title: string;
+  badges: { url: string; type: string }[];
+  views: number;
+};
+
+type VideoDetailsTypes = {
+  videoId?: string;
+  lengthSeconds?: string;
+  thumbnails?: { url: string }[];
+  title?: string;
+  descriptionSnippet?: string;
+  author?: AuthorTypes;
+  stats?: AuthorTypes;
+  publishedTimeText?: string;
+};
+
+type SearchResultTypes =  {
+  video : VideoDetailsTypes;
+  key : string;
+  }
+  
+
+const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
   return (
     <NextLink href={`/video?id=${video?.videoId}`}>
       <div className="flex flex-col md:flex-row mb-8 md:mb-3 lg:hover:bg-white/[0.1] rounded-xl md:p-4">
@@ -36,7 +60,7 @@ const SearchResultVideoCard = ({ video }) => {
             <div className="flex items-start mr-3">
               <div className="flex-h-9 w-9 rounded-full overflow-hidden">
                 <Image
-                  src={video?.author?.avatar[0]?.url}
+                  src={video?.author?.author[0]?.url}
                   alt="VideoThumbnail"
                   height={100}
                   width={300}

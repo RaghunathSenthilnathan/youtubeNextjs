@@ -1,4 +1,4 @@
-export const liveContent = {
+export const liveContent :  any = {
     "contents": [
         {
             "channel": {

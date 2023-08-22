@@ -1,4 +1,4 @@
-export const musicContent = {
+export const musicContent :  any = {
     "contents": [
         {
             "type": "video",

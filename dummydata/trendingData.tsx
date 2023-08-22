@@ -1,4 +1,4 @@
-export const trendingContent = {
+export const trendingContent :  any = {
     "contents": [
         {
             "type": "video",

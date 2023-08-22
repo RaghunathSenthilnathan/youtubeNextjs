@@ -1,3 +1,4 @@
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { CgClose } from "react-icons/cg";
@@ -8,15 +9,18 @@ import { SlMenu } from "react-icons/sl";
 import { Loader } from "../shared/Loader";
 import { Context } from "../utils/constant";
 import { NextLink } from "./NextLink";
+import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
-  const { loading, mobileMenu, setMobileMenu } = useContext(Context);
+  const [searchQuery, setSearchQuery] = React.useState<string>("");
+  const fetchResults = useContext(Context);
 
-  const searchQueryHandler = (event) => {
+  const searchQueryHandler = (
+    isClicked: string
+  ) => {
     if (
-      (event?.key === "Enter" || event === "searchButton") &&
+       isClicked === "searchButton" &&
       searchQuery?.length > 0
     ) {
       router.push(`/searchresult/${searchQuery}`);
@@ -24,7 +28,7 @@ const Header = () => {
   };
 
   const mobileMenuToggle = () => {
-    setMobileMenu(!mobileMenu);
+    fetchResults?.setMobileMenu(!fetchResults?.mobileMenu);
   };
 
   const pathname = usePathname();
@@ -33,7 +37,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-black">
-      {loading && <Loader />}
+      {fetchResults?.loading && <Loader />}
 
       <div className="flex h-5 items-center">
         {pageName !== "video" && (
@@ -41,7 +45,7 @@ const Header = () => {
             className="flex md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
             onClick={mobileMenuToggle}
           >
-            {mobileMenu ? (
+            {fetchResults?.mobileMenu ? (
               <CgClose className="text-white text-xl" />
             ) : (
               <SlMenu className="text-white text-xl" />
@@ -49,15 +53,19 @@ const Header = () => {
           </div>
         )}
         <NextLink href="/" className="flex h-5 items-center">
-          <img
+          <Image
             className="h-full dark:md:block"
             src="/images/yt-logo.png"
-            alt="Youtube"
+            alt="logo"
+            height={100}
+            width={100}
           />
-          <img
+          <Image
             className="hidden sm:h-full"
             src="/images/yt-logo-mobile.png"
-            alt="Youtube"
+            alt="logo"
+            height={100}
+            width={100}
           />
         </NextLink>
       </div>
@@ -70,7 +78,7 @@ const Header = () => {
             type="text"
             className="bg-transparent outline-none text-white pr-5 pl-5 md:pl-0 w-44 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
             onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyUp={searchQueryHandler}
+            // onKeyUp={(e)=>searchQueryHandler(e,'')}
             placeholder="Search"
             value={searchQuery}
           />
@@ -92,7 +100,12 @@ const Header = () => {
           </div>
         </div>
         <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
-          <img src="https://xsgames.co/randomusers/assets/avatars/female/67.jpg" />
+          <Image
+            src="https://xsgames.co/randomusers/assets/avatars/female/67.jpg"
+            alt="logo"
+            height={100}
+            width={100}
+          />
         </div>
       </div>
     </div>

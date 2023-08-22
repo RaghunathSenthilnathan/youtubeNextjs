@@ -1,4 +1,4 @@
-export const filmsContent = {
+export const filmsContent : any = {
     "contents": [
         {
             "channel": {

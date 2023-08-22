@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import LeftNavMenuItem from "./LeftNavMenuItem";
-import { Context,categories } from "../utils/constant";
-
+import { Context, categories } from "../utils/constant";
 
 const LeftNav = () => {
-  const { selectedCategory, setSelectedCategory, mobileMenu } =
-    useContext(Context);
-  const clickHandler = (name : string, type: string) => {
+  const fetchResults = useContext(Context);
+  const clickHandler = (name: string, type: string) => {
     switch (type) {
       case "category":
-        return setSelectedCategory(name);
+        return fetchResults?.setSelectedCategory(name);
       case "home":
-        return setSelectedCategory(name);
+        return fetchResults?.setSelectedCategory(name);
       case "menu":
         return false;
       default:
@@ -22,7 +20,7 @@ const LeftNav = () => {
     <>
       <div
         className={`md:block w-[240px] overflow-y-auto py-4 bg-black absolute md:relative z-6 translate-x-[-240px] md:translate-x-0 transition-all ${
-          mobileMenu ? "translate-x-0" : ""
+          fetchResults?.mobileMenu ? "translate-x-0" : ""
         }`}
       >
         <div className="flex px-5 flex-col">
@@ -36,7 +34,7 @@ const LeftNav = () => {
                     icon={item?.icon}
                     action={() => clickHandler(item?.name, item?.type)}
                     className={`${
-                      selectedCategory === item?.name
+                      fetchResults?.selectedCategory === item?.name
                         ? "my-5 border-white/[0.5]"
                         : ""
                     }`}

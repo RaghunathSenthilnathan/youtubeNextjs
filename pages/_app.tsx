@@ -11,9 +11,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <>
-      { isClient && (<Context>
-        <Component {...pageProps} />
-      </Context>)}
+      {isClient && (
+        <Context value={""}>
+          <Component {...pageProps} />
+        </Context>
+      )}
     </>
   );
 }

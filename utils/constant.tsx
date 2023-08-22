@@ -38,4 +38,15 @@ export const categories = [
   { id: 14, name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
 
-export const Context = createContext(null);
+export interface CurrentUserContextType {
+  loading: boolean,
+  setLoading: (loading: boolean) => void,
+  searchResults: any,
+  setSearchResults: (value: any) => void,
+  selectedCategory: string,
+  setSelectedCategory: (value: any) => void,
+  mobileMenu: boolean,
+  setMobileMenu: (value: any) => void
+}
+
+export const Context = createContext<CurrentUserContextType | null>(null);
