@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
-import React, { useEffect, useState } from "react";
-import "../globals.css";
+import { useEffect, useState } from "react";
 import Context from "../context/contextApi";
+import "../globals.css";
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {

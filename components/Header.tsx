@@ -1,6 +1,6 @@
-import React from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CgClose } from "react-icons/cg";
 import { FiBell } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
@@ -9,7 +9,6 @@ import { SlMenu } from "react-icons/sl";
 import { Loader } from "../shared/Loader";
 import { Context } from "../utils/constant";
 import { NextLink } from "./NextLink";
-import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();

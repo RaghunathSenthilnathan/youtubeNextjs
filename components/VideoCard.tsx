@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useCallback } from "react";
-import { abbreviateNumber } from "js-abbreviation-number";
-import { BsFillCheckCircleFill } from "react-icons/bs";
-import { NextLink } from "./NextLink";
-import VideoLength from "../shared/VideoLength";
-import Image from "next/image";
 import { VideoCardTypes } from "@/model/searchResult";
+import { abbreviateNumber } from "js-abbreviation-number";
+import Image from "next/image";
+import React from "react";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import VideoLength from "../shared/VideoLength";
+import { NextLink } from "./NextLink";
 
 const VideoCard: React.FC<VideoCardTypes> = ({ video }) => {
   return (

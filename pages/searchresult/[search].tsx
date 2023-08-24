@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "next/navigation";
-import { fetchDataFromApi } from "@/utils/api";
 import LeftNav from "@/components/LeftNav";
 import SearchResultVideoCard from "@/components/SearchResultVideoCard";
 import { ResultTypes } from "@/model/searchResult";
+import { fetchDataFromApi } from "@/utils/api";
+import { useParams } from "next/navigation";
+import React, { useEffect } from "react";
 
 const SearchPanel = () => {
   const [result, setResult] = React.useState<Array<ResultTypes>>([]);

@@ -1,9 +1,9 @@
+import { SearchResultTypes } from "@/model/searchResult";
 import VideoLength from "@/shared/VideoLength";
 import { abbreviateNumber } from "js-abbreviation-number";
 import Image from "next/image";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
-import { SearchResultTypes } from "@/model/searchResult";
 
 const SuggestionVideosCard: React.FC<SearchResultTypes> = ({ key, video }) => {
   return (

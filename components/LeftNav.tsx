@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import LeftNavMenuItem from "./LeftNavMenuItem";
+import { useContext } from "react";
 import { Context, categories } from "../utils/constant";
+import LeftNavMenuItem from "./LeftNavMenuItem";
 
 const LeftNav = () => {
   const fetchResults = useContext(Context);

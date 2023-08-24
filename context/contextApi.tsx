@@ -1,19 +1,11 @@
 "use client";
 
 import React, {
-  createContext,
-  useState,
-  useEffect,
   ProviderProps,
+  memo
 } from "react";
 import { fetchDataFromApi } from "../utils/api";
-import { memo } from "react";
 import { Context } from "../utils/constant";
-import { newContent } from "@/dummydata/homeData";
-import { trendingContent } from "@/dummydata/trendingData";
-import { musicContent } from "@/dummydata/musicData";
-import { liveContent } from "@/dummydata/liveData";
-import { filmsContent } from "@/dummydata/filmsData";
 
 const AppContext = (props: ProviderProps<string>) => {
   const [loading, setLoading] = React.useState<boolean>(false);

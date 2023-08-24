@@ -1,5 +1,4 @@
-import React from "react";
-import { AnchorHTMLAttributes } from "react";
+import React, { AnchorHTMLAttributes } from "react";
 
 type LoaderProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   className?: string;
