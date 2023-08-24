@@ -51,15 +51,19 @@ const Header = () => {
             className="h-full dark:md:block"
             src="/images/yt-logo.png"
             alt="logo"
-            height={100}
-            width={100}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
           <Image
             className="hidden sm:h-full"
             src="/images/yt-logo-mobile.png"
             alt="logo"
-            height={100}
-            width={100}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
         </NextLink>
       </div>
@@ -97,8 +101,10 @@ const Header = () => {
           <Image
             src="https://xsgames.co/randomusers/assets/avatars/female/67.jpg"
             alt="logo"
-            height={100}
-            width={100}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
       </div>

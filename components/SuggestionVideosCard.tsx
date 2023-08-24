@@ -23,8 +23,10 @@ const SuggestionVideosCard: React.FC<SearchResultTypes> = ({ key, video }) => {
               className="h-full w-full object-cover"
               src={video?.thumbnails[0]?.url}
               alt="videothumbnail"
-              width={100}
-              height={100}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }}
             />
           </div>
           <div className="flex flex-col ml-3 overflow-hidden">

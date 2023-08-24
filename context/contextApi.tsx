@@ -20,7 +20,7 @@ const AppContext = (props: ProviderProps<string>) => {
   async function fetchSelectedCategoryData(params: string) {
     setLoading(true);
     await fetchDataFromApi(`search/?q=${params}`).then((contents) => {
-      console.log({contents});
+      // console.log({contents});
       setSearchResults(contents);
       setLoading(false);
     });

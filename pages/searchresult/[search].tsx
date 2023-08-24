@@ -5,16 +5,21 @@ import SearchResultVideoCard from "@/components/SearchResultVideoCard";
 import { ResultTypes } from "@/model/searchResult";
 import { fetchDataFromApi } from "@/utils/api";
 import { useParams } from "next/navigation";
+import { useRouter } from 'next/router'
 import React, { useEffect } from "react";
 
 const SearchPanel = () => {
   const [result, setResult] = React.useState<Array<ResultTypes>>([]);
   const [loading, setLoading] = React.useState<Boolean>(false);
-  const params = useParams();
+  const router = useRouter()
+  const  params = router?.query?.search
 
   useEffect(() => {
     document.getElementById("root")?.classList.remove("custom-h");
-    fetchResults(params);
+    if(params != null){
+      fetchResults(params);
+    }
+    
   }, [params]);
 
   const fetchResults = async (params1: any) => {
@@ -25,7 +30,7 @@ const SearchPanel = () => {
     });
   };
 
-  console.log({ params });
+  // console.log({ router });
   return (
     <>
       <div className="flex flex-row h-[calc(100%-56px)]">

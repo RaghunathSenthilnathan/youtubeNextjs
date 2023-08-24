@@ -78,8 +78,10 @@ const VideoCardPanel = () => {
                     <Image
                       className="h-full w-full object-cover"
                       src={video?.author?.avatar[0].url}
-                      height={100}
-                      width={100}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "100%", height: "auto" }}
                       alt="Avatar Image"
                     />
                   </div>

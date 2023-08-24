@@ -18,8 +18,10 @@ const VideoCard: React.FC<VideoCardTypes> = ({ video }) => {
               className="h-full w-full object-cover"
               src={video?.thumbnails[0]?.url}
               alt="videothumb"
-              height={100}
-              width={100}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }}
             />
             <div
               className="absolute bottom-0 right-0 bg-black px-1 text-white
@@ -37,8 +39,10 @@ const VideoCard: React.FC<VideoCardTypes> = ({ video }) => {
                   className="h-full w=full object-cover"
                   src={video?.author?.avatar[0]?.url}
                   alt="videothumb"
-                  height={100}
-                  width={100}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
             </div>

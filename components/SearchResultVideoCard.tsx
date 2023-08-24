@@ -25,8 +25,10 @@ const SearchResultVideoCard: React.FC<SearchResultTypes> = ({ key, video }) => {
           <Image
             src={video?.thumbnails[0].url}
             alt="VideoThumbnail"
-            height={100}
-            width={300}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
         <div className="flex flex-col ml-4 md:ml-6 mt-4 md:mt-0 overflow-hidden">
@@ -42,8 +44,10 @@ const SearchResultVideoCard: React.FC<SearchResultTypes> = ({ key, video }) => {
                 <Image
                   src={video?.author?.avatar[0].url}
                   alt="VideoThumbnail"
-                  height={100}
-                  width={300}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex flex-col">
