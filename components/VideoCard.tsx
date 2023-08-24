@@ -6,34 +6,13 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
 import VideoLength from "../shared/VideoLength";
 import Image from "next/image";
-
-type AuthorTypes = {
-  author: { url: string}[];
-  title: string;
-  badges: { url: string; type: string }[];
-  views: number;
-  avatar : { url: string}[];
-};
-
-type VideoDetailsTypes = {
-  videoId: string;
-  lengthSeconds: string;
-  thumbnails: { url: string }[];
-  title: string;
-  descriptionSnippet: string;
-  author: AuthorTypes;
-  stats: AuthorTypes;
-  publishedTimeText: string;
-};
-
-type VideoCardTypes =  {
-  video : VideoDetailsTypes
-  }
+import { VideoCardTypes } from "@/model/searchResult";
 
 
 
 
-const VideoCard = ({video} : VideoCardTypes) => {
+
+const VideoCard : React.FC <VideoCardTypes> = ({video}) => {
   return (
     <>
       <NextLink href={`/video?id=${video.videoId}`}>

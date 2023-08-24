@@ -34,7 +34,7 @@ const AppContext = (props: ProviderProps<string>) => {
     // });
     const getSearchVideos = (): Promise<any[]> =>
       new Promise<any[]>((res, rej) => {
-        console.log({ params });
+        // console.log({ params });
         setTimeout(() => {
           switch (params) {
             case "New":

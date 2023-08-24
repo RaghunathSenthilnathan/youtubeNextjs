@@ -3,43 +3,16 @@
 import SuggestionVideosCard from "@/components/SuggestionVideosCard";
 import { fetchDataFromApi } from "@/utils/api";
 import { abbreviateNumber } from "js-abbreviation-number";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import ReactPlayer from "react-player";
 import { Loader } from "../../shared/Loader";
-import Image from "next/image";
-import React from "react";
-
-interface AuthorTypes {
-  author: { url: string}[];
-  title: string;
-  badges: { url: string; type: string }[];
-  views: number ;
-  likes: number ;
-  avatar : { url: string}[];
-  stats : {subscribersText: string}
-
-};
-
-interface VideoDetailsTypes {
-  videoId?: string;
-  lengthSeconds?: string;
-  thumbnails?: { url: string }[];
-  title?: string;
-  descriptionSnippet?: string;
-  author?: AuthorTypes;
-  stats?: AuthorTypes;
-  publishedTimeText?: string;
-};
-
-
-interface RelatedVideosTypes  {
-  contents : {type :string ; video : VideoDetailsTypes}[];
-}
-
-
+import { SearchResultTypes } from "@/model/searchResult";
+import { VideoDetailsTypes } from "@/model/searchResult";
+import { RelatedVideosTypes } from "@/model/searchResult";
 
 const VideoCardPanel = () => {
   const [loading, setLoading] = React.useState(false);
@@ -47,10 +20,11 @@ const VideoCardPanel = () => {
   const [relatedVideos, setRelatedVideos] = React.useState<RelatedVideosTypes>();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  
   const fetchVideoDetails = React.useCallback(async () => {
     setLoading(true);
     await fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-      console.log({ res });
+      // console.log({ res });
       setVideo(res);
       setLoading(false);
     });
@@ -59,7 +33,7 @@ const VideoCardPanel = () => {
   const fetchRelatedVideos = useCallback(async () => {
     setLoading(true);
     await fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-      console.log({ res });
+      // console.log({ res });
       setRelatedVideos(res);
       setLoading(false);
     });
@@ -75,7 +49,9 @@ const VideoCardPanel = () => {
       .catch(console.error);
   }, [fetchRelatedVideos, fetchVideoDetails, id]);
 
-  console.log({ id, video });
+  // console.log({ id, video });
+
+
 
   return (
     <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
@@ -100,7 +76,7 @@ const VideoCardPanel = () => {
                 <div className=" flex h-11 w-11 rounded-full overflow-hidden">
                   <Image
                     className="h-full w-full object-cover"
-                    src={video?.author?.avatar[0]?.url as string}
+                    src={video?.author?.avatar[0].url}
                     height={100}
                     width={100}
                     alt="Avatar Image"
@@ -123,7 +99,7 @@ const VideoCardPanel = () => {
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15]">
                 <AiOutlineLike className=" text-xl text-white mr-2" />
                 <span>
-                  {`${abbreviateNumber(video?.stats?.likes as number, 2)} Likes`}
+                  {`${abbreviateNumber(video?.stats?.likes, 2)} Likes`}
                 </span>
               </div>
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15]">
@@ -139,7 +115,7 @@ const VideoCardPanel = () => {
           {relatedVideos?.contents?.map((item, index) => {
             if (item?.type !== "video") return false;
             else
-              return <SuggestionVideosCard key={item?.video?.videoId}  video = {item?.video} />;
+              return <SuggestionVideosCard key={item?.video?.videoId as string}  video = {item?.video} />;
           })}
         </div>
       </div>

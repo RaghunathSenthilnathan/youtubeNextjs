@@ -1,33 +1,12 @@
-import React from "react";
+import VideoLength from "@/shared/VideoLength";
 import { abbreviateNumber } from "js-abbreviation-number";
+import Image from "next/image";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
-import VideoLength from "@/shared/VideoLength";
-import Image from "next/image";
+import { SearchResultTypes } from "@/model/searchResult";
 
 
-type AuthorTypes = {
-  author: { url: string }[];
-  title: string;
-  badges: { url: string; type: string }[];
-  views: number;
-};
-
-type VideoDetailsTypes = {
-  videoId: string;
-  lengthSeconds: string;
-  thumbnails: { url: string }[];
-  title: string;
-  descriptionSnippet: string;
-  author: AuthorTypes;
-  stats: AuthorTypes;
-  publishedTimeText: string;
-};
-type SuggestionVideosCardTypes =  {
-video : VideoDetailsTypes
-}
-
-const SuggestionVideosCard = ({video}  : SuggestionVideosCardTypes) => {
+const SuggestionVideosCard : React.FC<SearchResultTypes> = ({ key, video}) => {
   return (
     <>
       <NextLink href={`/video?id=${video.videoId}`}>

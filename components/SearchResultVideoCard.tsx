@@ -1,38 +1,17 @@
-import React from "react";
-import { NextLink } from "./NextLink";
-import Image from "next/image";
 import VideoLength from "@/shared/VideoLength";
-import { BsFillCheckCircleFill } from "react-icons/bs";
 import { abbreviateNumber } from "js-abbreviation-number";
+import Image from "next/image";
+import React from "react";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import { NextLink } from "./NextLink";
+import { SearchResultTypes } from "@/model/searchResult";
 
-type AuthorTypes = {
-  author: { url: string }[];
-  title: string;
-  badges: { url: string; type: string }[];
-  views: number;
-};
-
-type VideoDetailsTypes = {
-  videoId?: string;
-  lengthSeconds?: string;
-  thumbnails?: { url: string }[];
-  title?: string;
-  descriptionSnippet?: string;
-  author?: AuthorTypes;
-  stats?: AuthorTypes;
-  publishedTimeText?: string;
-};
-
-type SearchResultTypes =  {
-  video : VideoDetailsTypes;
-  key : string;
-  }
   
 
 const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
   return (
-    <NextLink href={`/video?id=${video?.videoId}`}>
-      <div className="flex flex-col md:flex-row mb-8 md:mb-3 lg:hover:bg-white/[0.1] rounded-xl md:p-4">
+    <NextLink  href={`/video?id=${video?.videoId}`}>
+      <div key={key?.toString()} className="flex flex-col md:flex-row mb-8 md:mb-3 lg:hover:bg-white/[0.1] rounded-xl md:p-4">
         <div className="relative flex shrink-0 h-48 md:h-28 lg:h-40 xl:h-48 w-full md:w-48 lg:w-64 xl:w-80 rounded bg-slate-800 overflow-hidden">
           <div
             className="absolute bottom-0 right-0 bg-black px-1 text-white
@@ -43,7 +22,7 @@ const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
             )}
           </div>
           <Image
-            src={video?.thumbnails[0]?.url}
+            src={video?.thumbnails[0].url}
             alt="VideoThumbnail"
             height={100}
             width={300}
@@ -60,7 +39,7 @@ const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
             <div className="flex items-start mr-3">
               <div className="flex-h-9 w-9 rounded-full overflow-hidden">
                 <Image
-                  src={video?.author?.author[0]?.url}
+                  src={video?.author?.avatar[0].url}
                   alt="VideoThumbnail"
                   height={100}
                   width={300}
@@ -75,7 +54,7 @@ const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
                 </span>
                 <div className="flex text-sm font-semibold text-white/[0.7] truncate overflow-hidden">
                   <span>
-                    {`${abbreviateNumber(video?.stats?.views, 2)} views`}
+                    {`${abbreviateNumber(video?.stats?.views as number, 2)} views`}
                   </span>
                   <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
                     .
