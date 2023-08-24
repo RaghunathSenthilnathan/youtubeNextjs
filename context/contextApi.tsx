@@ -27,36 +27,36 @@ const AppContext = (props: ProviderProps<string>) => {
 
   async function fetchSelectedCategoryData(params: string) {
     setLoading(true);
-    // await fetchDataFromApi(`search/?q=${params}`).then((contents) => {
-    //   console.log({contents});
-    //   setSearchResults(contents);
-    //   setLoading(false);
-    // });
-    const getSearchVideos = (): Promise<any[]> =>
-      new Promise<any[]>((res, rej) => {
-        // console.log({ params });
-        setTimeout(() => {
-          switch (params) {
-            case "New":
-              return res(newContent);
-            case "Trending":
-              return res(trendingContent);
-            case "Music":
-              return res(musicContent);
-            case "Films":
-              return res(filmsContent);
-            case "Live":
-              return res(liveContent);
-            default:
-              res(newContent);
-          }
-        }, 2000);
-      });
-    getSearchVideos().then((res) => {
-      console.log({ res });
-      setSearchResults(res);
+    await fetchDataFromApi(`search/?q=${params}`).then((contents) => {
+      console.log({contents});
+      setSearchResults(contents);
       setLoading(false);
     });
+    // const getSearchVideos = (): Promise<any[]> =>
+    //   new Promise<any[]>((res, rej) => {
+    //     console.log({ params });
+    //     setTimeout(() => {
+    //       switch (params) {
+    //         case "New":
+    //           return res(newContent);
+    //         case "Trending":
+    //           return res(trendingContent);
+    //         case "Music":
+    //           return res(musicContent);
+    //         case "Films":
+    //           return res(filmsContent);
+    //         case "Live":
+    //           return res(liveContent);
+    //         default:
+    //           res(newContent);
+    //       }
+    //     }, 2000);
+    //   });
+    // getSearchVideos().then((res) => {
+    //   console.log({ res });
+    //   setSearchResults(res);
+    //   setLoading(false);
+    // });
   }
 
   return (
