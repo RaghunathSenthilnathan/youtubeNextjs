@@ -51,19 +51,15 @@ const Header = () => {
             className="h-full dark:md:block"
             src="/images/yt-logo.png"
             alt="logo"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
+            width={100}
+            height={100}
           />
           <Image
             className="hidden sm:h-full"
             src="/images/yt-logo-mobile.png"
             alt="logo"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
+            width={100}
+            height={100}
           />
         </NextLink>
       </div>
