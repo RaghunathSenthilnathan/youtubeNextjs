@@ -1,3 +1,3 @@
-import VideoCardPanel from './videocardpanel'
+import VideoCardPanel from "./videocardpanel";
 
 export default VideoCardPanel;

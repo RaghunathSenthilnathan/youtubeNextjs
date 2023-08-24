@@ -11,11 +11,11 @@ const SearchPanel = () => {
   const [result, setResult] = React.useState<Array<ResultTypes>>([]);
   const [loading, setLoading] = React.useState<Boolean>(false);
   const params = useParams();
-  
+
   useEffect(() => {
     document.getElementById("root")?.classList.remove("custom-h");
-    fetchResults(params)
-  },[params]);
+    fetchResults(params);
+  }, [params]);
 
   const fetchResults = async (params1: any) => {
     setLoading(true);
@@ -25,7 +25,6 @@ const SearchPanel = () => {
     });
   };
 
-  
   console.log({ params });
   return (
     <>

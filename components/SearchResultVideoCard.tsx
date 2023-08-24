@@ -6,12 +6,13 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
 import { SearchResultTypes } from "@/model/searchResult";
 
-  
-
-const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
+const SearchResultVideoCard: React.FC<SearchResultTypes> = ({ key, video }) => {
   return (
-    <NextLink  href={`/video?id=${video?.videoId}`}>
-      <div key={key?.toString()} className="flex flex-col md:flex-row mb-8 md:mb-3 lg:hover:bg-white/[0.1] rounded-xl md:p-4">
+    <NextLink href={`/video?id=${video?.videoId}`}>
+      <div
+        key={key?.toString()}
+        className="flex flex-col md:flex-row mb-8 md:mb-3 lg:hover:bg-white/[0.1] rounded-xl md:p-4"
+      >
         <div className="relative flex shrink-0 h-48 md:h-28 lg:h-40 xl:h-48 w-full md:w-48 lg:w-64 xl:w-80 rounded bg-slate-800 overflow-hidden">
           <div
             className="absolute bottom-0 right-0 bg-black px-1 text-white
@@ -54,7 +55,10 @@ const SearchResultVideoCard : React.FC<SearchResultTypes> = ({key,video}) => {
                 </span>
                 <div className="flex text-sm font-semibold text-white/[0.7] truncate overflow-hidden">
                   <span>
-                    {`${abbreviateNumber(video?.stats?.views as number, 2)} views`}
+                    {`${abbreviateNumber(
+                      video?.stats?.views as number,
+                      2
+                    )} views`}
                   </span>
                   <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
                     .

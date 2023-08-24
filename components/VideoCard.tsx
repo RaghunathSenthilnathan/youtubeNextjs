@@ -8,11 +8,7 @@ import VideoLength from "../shared/VideoLength";
 import Image from "next/image";
 import { VideoCardTypes } from "@/model/searchResult";
 
-
-
-
-
-const VideoCard : React.FC <VideoCardTypes> = ({video}) => {
+const VideoCard: React.FC<VideoCardTypes> = ({ video }) => {
   return (
     <>
       <NextLink href={`/video?id=${video.videoId}`}>

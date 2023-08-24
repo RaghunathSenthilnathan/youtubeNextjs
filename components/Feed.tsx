@@ -18,14 +18,19 @@ const Feed = () => {
           <div className="grid grid-cols-1 md:grod-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
             {!fetchResults?.loading &&
               fetchResults?.searchResults?.contents?.length > 0 &&
-              fetchResults?.searchResults?.contents?.map((item : any,index : any) => {
-                if (item?.type != "video") return false;
-                return (
-                  <>
-                    <VideoCard key={item?.video?.videoId} video={item?.video} />
-                  </>
-                );
-              })}
+              fetchResults?.searchResults?.contents?.map(
+                (item: any, index: any) => {
+                  if (item?.type != "video") return false;
+                  return (
+                    <>
+                      <VideoCard
+                        key={item?.video?.videoId}
+                        video={item?.video}
+                      />
+                    </>
+                  );
+                }
+              )}
           </div>
         </div>
       </div>

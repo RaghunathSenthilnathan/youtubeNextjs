@@ -16,13 +16,8 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = React.useState<string>("");
   const fetchResults = useContext(Context);
 
-  const searchQueryHandler = (
-    isClicked: string
-  ) => {
-    if (
-       isClicked === "searchButton" &&
-      searchQuery?.length > 0
-    ) {
+  const searchQueryHandler = (isClicked: string) => {
+    if (isClicked === "searchButton" && searchQuery?.length > 0) {
       router.push(`/searchresult/${searchQuery}`);
     }
   };

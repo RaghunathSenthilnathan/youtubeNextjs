@@ -17,10 +17,11 @@ import { RelatedVideosTypes } from "@/model/searchResult";
 const VideoCardPanel = () => {
   const [loading, setLoading] = React.useState(false);
   const [video, setVideo] = React.useState<VideoDetailsTypes>();
-  const [relatedVideos, setRelatedVideos] = React.useState<RelatedVideosTypes>();
+  const [relatedVideos, setRelatedVideos] =
+    React.useState<RelatedVideosTypes>();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  
+
   const fetchVideoDetails = React.useCallback(async () => {
     setLoading(true);
     await fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
@@ -50,8 +51,6 @@ const VideoCardPanel = () => {
   }, [fetchRelatedVideos, fetchVideoDetails, id]);
 
   // console.log({ id, video });
-
-
 
   return (
     <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
@@ -105,7 +104,10 @@ const VideoCardPanel = () => {
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15]">
                 <AiOutlineLike className=" text-xl text-white mr-2" />
                 <span>
-                  {`${abbreviateNumber(video?.stats?.views as number, 2)} Views`}
+                  {`${abbreviateNumber(
+                    video?.stats?.views as number,
+                    2
+                  )} Views`}
                 </span>
               </div>
             </div>
@@ -115,7 +117,12 @@ const VideoCardPanel = () => {
           {relatedVideos?.contents?.map((item, index) => {
             if (item?.type !== "video") return false;
             else
-              return <SuggestionVideosCard key={item?.video?.videoId as string}  video = {item?.video} />;
+              return (
+                <SuggestionVideosCard
+                  key={item?.video?.videoId as string}
+                  video={item?.video}
+                />
+              );
           })}
         </div>
       </div>

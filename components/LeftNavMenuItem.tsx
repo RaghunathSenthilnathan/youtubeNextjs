@@ -1,15 +1,20 @@
 import React from "react";
 
-
 interface LeftMenuTypes {
-  id : string;
-  text :string;
-  icon : React.JSX.Element;
-  className : string;
-  action : (event: React.MouseEvent<HTMLDivElement>) => void;
+  id: string;
+  text: string;
+  icon: React.JSX.Element;
+  className: string;
+  action: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const LeftNavMenuItem = ({ id, text , icon, className, action } : LeftMenuTypes) => {
+const LeftNavMenuItem = ({
+  id,
+  text,
+  icon,
+  className,
+  action,
+}: LeftMenuTypes) => {
   return (
     <>
       <div

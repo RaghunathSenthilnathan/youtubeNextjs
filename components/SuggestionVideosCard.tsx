@@ -5,8 +5,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { NextLink } from "./NextLink";
 import { SearchResultTypes } from "@/model/searchResult";
 
-
-const SuggestionVideosCard : React.FC<SearchResultTypes> = ({ key, video}) => {
+const SuggestionVideosCard: React.FC<SearchResultTypes> = ({ key, video }) => {
   return (
     <>
       <NextLink href={`/video?id=${video.videoId}`}>

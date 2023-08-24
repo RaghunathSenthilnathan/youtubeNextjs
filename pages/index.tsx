@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col h-full">
-         <Header/>
-       <Suspense fallback={<Loading />}>
-          <Feed/>
-         </Suspense>
+        <Header />
+        <Suspense fallback={<Loading />}>
+          <Feed />
+        </Suspense>
       </main>
     </>
   );

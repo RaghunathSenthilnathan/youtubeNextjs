@@ -39,14 +39,14 @@ export const categories = [
 ];
 
 export interface CurrentUserContextType {
-  loading: boolean,
-  setLoading: (loading: boolean) => void,
-  searchResults: any,
-  setSearchResults: (value: any) => void,
-  selectedCategory: string,
-  setSelectedCategory: (value: any) => void,
-  mobileMenu: boolean,
-  setMobileMenu: (value: any) => void
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+  searchResults: any;
+  setSearchResults: (value: any) => void;
+  selectedCategory: string;
+  setSelectedCategory: (value: any) => void;
+  mobileMenu: boolean;
+  setMobileMenu: (value: any) => void;
 }
 
 export const Context = createContext<CurrentUserContextType | null>(null);
